@@ -1,0 +1,137 @@
+/* Estilos Generales */
+:root {
+    /* Paleta "Noche de Cine" */
+    --background-color: #0B0E17;
+    --primary-color: #1D2939;
+    --card-bg-color: #252A34;
+    --secondary-color: #D4AF37;
+    --text-color: #EAEAEA;     
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Encabezado y Barra de Búsqueda */
+.header {
+    background-color: var(--primary-color);
+    padding: 1.5rem 2rem;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header h1 {
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+#searchInput {
+    width: 100%;
+    max-width: 500px;
+    padding: 0.8rem 1rem;
+    border: 2px solid var(--secondary-color);
+    border-radius: 50px;
+    background-color: var(--card-bg-color);
+    color: var(--text-color);
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#searchInput:focus {
+    border-color: #fff;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+/* Contenedor de Resultados */
+.results-container {
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+    justify-items: center;
+}
+
+.placeholder-text {
+    grid-column: 1 / -1; /* Ocupa todo el ancho */
+    text-align: center;
+    font-size: 1.2rem;
+    color: rgba(234, 234, 234, 0.6); /* Color de texto más sutil */
+}
+
+/* Tarjeta de Película */
+.movie-card {
+    background-color: var(--card-bg-color);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.movie-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.1);
+}
+
+.movie-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.movie-info {
+    padding: 1rem;
+}
+
+.movie-info h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--secondary-color);
+}
+
+.movie-overview {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(29, 41, 57, 0.97); /* Usando el nuevo color primario con más opacidad */
+    color: var(--text-color);
+    padding: 1.5rem;
+    transform: translateY(101%);
+    transition: transform 0.4s ease-in-out;
+    overflow-y: auto;
+    font-size: 0.95rem;
+}
+
+.movie-card:hover .movie-overview {
+    transform: translateY(0);
+}
+
+/* Diseño Responsivo */
+@media (max-width: 768px) {
+    .header {
+        padding: 1rem;
+    }
+    .results-container {
+        padding: 1rem;
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+}
